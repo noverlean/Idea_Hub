@@ -1,0 +1,13 @@
+.workspace
+{
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--c-base-1);
+
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    top: 0;
+    left: 0;
+}
