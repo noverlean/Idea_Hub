@@ -1,0 +1,9 @@
+.horizontalLine
+{
+    width: calc(100% - 30px);
+    height: 1px;
+
+    margin: 2px 15px;
+
+    background-color: var(--c-alt-1);
+}

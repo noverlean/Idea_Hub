@@ -6,6 +6,9 @@
   "appearance": "Appearance",
   "account": "Account",
   "ui_lang": "Language",
+  "ui_language": "Program Language",
+  "ru":"Russian",
+  "en":"English",
   "theme": "Themes",
   "icon": "App Icon"
 }

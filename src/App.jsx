@@ -13,7 +13,7 @@ function App() {
         <div className='workspace'>
             <PanelControlBar currentHierarchyPanelOpenState={ hierarchyPanelOpenType } setHierarchyPanelOpenState={ setHierarchyPanelOpenState }/>
             <HierarchyPanel openType={ hierarchyPanelOpenType }/>
-            <WorkCanvas openType={ hierarchyPanelOpenType } />
+            <WorkCanvas hierarchyPanelOpenType={ hierarchyPanelOpenType } />
         </div>
     </>
   )

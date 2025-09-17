@@ -118,7 +118,7 @@ hr
     background-color: var(--c-base-2);
     font-size: 15px;
 
-    transition: all .3s var(--a-base);
+    transition: all .2s var(--a-base);
     cursor: pointer;
 }
 .hierarchyNode .headliner:hover
@@ -139,7 +139,7 @@ hr
     border: 1px solid var(--c-base-1);
     background-color: var(--c-base-1);
 
-    transition: all .3s var(--a-base);
+    transition: all .2s var(--a-base);
 }
 
 .hierarchyNode .body

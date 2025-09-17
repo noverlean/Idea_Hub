@@ -6,10 +6,6 @@ export const settings = {
     defaults: [
         new Category(
             'generalSettings',
-            []
-        ),
-        new Category(
-            'appearance',
             [
                 new Section(
                     'ui_lang',
@@ -17,6 +13,7 @@ export const settings = {
                         new Setting(
                             'ui_language',
                             'ru',
+                            'dropdown',
                             [
                                 'ru',
                                 'en'
@@ -24,12 +21,18 @@ export const settings = {
                         )
                     ]
                 ),
+            ]
+        ),
+        new Category(
+            'appearance',
+            [
                 new Section(
                     'theme',
                     [
                         new Setting(
                             'theme',
                             'black',
+                            'dropdown',
                             [
                                 'white',
                                 'black'
@@ -43,6 +46,7 @@ export const settings = {
                         new Setting(
                             'icon',
                             'default',
+                            'gallery',
                             [
                                 'default'
                             ]

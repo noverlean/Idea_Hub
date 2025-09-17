@@ -63,6 +63,50 @@ button:hover {
   color: var(--c-text-1);
 }
 
+/* Сброс стандартных стилей */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: var(--c-base-1);
+  padding: 10px 40px 10px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 0;
+  min-width: 100px;
+  cursor: pointer;
+  outline: none;
+  transition: border 0.3s ease;
+
+  &, &::picker(select) {
+    appearance: base-select;    
+  }
+}
+
+/* Кастомная стрелка */
+select::after {
+  content: '▾';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 16px;
+  color: #555;
+}
+
+select option {
+  background: var(--c-base-1);
+  color: var(--c-alt-1);
+  font-size: 16px;
+  padding: 10px;
+  border: 0;
+}
+select option:hover {
+  background: var(--c-accent-3);
+  color: var(--c-alt-1);
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

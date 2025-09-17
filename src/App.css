@@ -12,7 +12,8 @@
   --c-accent-3: #791eff;
   --c-alt-1: #fff;
 
-  --c-transparent: #00000000;
+  --c-transparent: #ffffff00;
+  --c-transparent-1: #ffffff11;
 
   --a-base: cubic-bezier(0, 0, .2, 1)
 }
