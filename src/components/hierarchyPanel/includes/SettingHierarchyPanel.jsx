@@ -31,6 +31,7 @@ export default function SettingHierarchyPanel()
                         label={ t(node.title) }
                         content={ node.content }
                         handleParentNodeSelection={ handleNodeSelection }
+                        defaultActiveNodeLabel={ 'ui_lang' }
                     />
                 ))
             }
