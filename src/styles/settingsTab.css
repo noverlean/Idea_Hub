@@ -1,6 +1,9 @@
 .settingsTab
 {
-    max-width: 600px;
+    width: 100%;
+    max-width: 650px;
+    min-width: 200px;
+    justify-self: center;
 
     padding: 20px;
 
