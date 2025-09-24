@@ -69,8 +69,8 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   background: var(--c-base-1);
-  padding: 10px 40px 10px 15px;
-  font-size: 16px;
+  padding: 5px 10px 5px 10px;
+  font-size: 15px;
   border-radius: 6px;
   border: 0;
   min-width: 100px;
@@ -98,8 +98,8 @@ select::after {
 select option {
   background: var(--c-base-1);
   color: var(--c-alt-1);
-  font-size: 16px;
-  padding: 10px;
+  font-size: 14px;
+  padding: 5px;
   border: 0;
 }
 select option:hover {
