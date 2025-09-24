@@ -153,4 +153,16 @@ hr
 
     margin-left: 15px;
     margin-top: 3px;
+
+    overflow: hidden;
+
+    transition: all .3s var(--a-base);
+}
+.body.collapsed
+{
+    height: 0px;
+}
+.body.showed
+{
+    height: auto;
 }

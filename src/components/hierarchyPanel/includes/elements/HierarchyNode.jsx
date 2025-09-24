@@ -39,7 +39,7 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                 >
                     <p className='label'> { t(label) } </p>
                 </div>
-                <div className='body'>
+                <div className={'body' + (selected ? ' showed' : ' collapsed') }>
                     {
                         content.map((node, index) => {
                             let _styleModifier1 = '';
