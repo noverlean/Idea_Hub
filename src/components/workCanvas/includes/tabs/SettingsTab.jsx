@@ -1,4 +1,4 @@
-import '@css/settings.css'
+import '@css/settingsTab.css'
 import React from 'react'
 import { useState } from 'react'
 import { settings } from '@content/settings'
