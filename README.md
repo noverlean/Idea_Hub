@@ -1,27 +1,27 @@
-# 🧠 Idea Hub — Облегчённый инструмент для создания заметок
+# 🧠 Idea Hub — A Lightweight Note-Taking Tool
 
-Idea Hub — это приложение на базе **React + Vite**, вдохновлённое [Obsidian](https://obsidian.md/), но с упрощённым и более доступным подходом к созданию заметок. Цель проекта — сделать процесс записи мыслей, идей и знаний максимально быстрым, интуитивным и приятным.
-
----
-
-## 🚀 Особенности
-
-- ⚡️ Мгновенная загрузка и отзывчивый интерфейс благодаря Vite
-- 📝 Упрощённая система создания и организации заметок
-- 🔍 Быстрый поиск и навигация по записям
-- 🎨 Чистый и минималистичный дизайн
+**Idea Hub** is a React + Vite-based application inspired by [Obsidian](https://obsidian.md), offering a simplified and more accessible approach to creating notes. The goal of this project is to make capturing thoughts, ideas, and knowledge as fast, intuitive, and enjoyable as possible.
 
 ---
 
-## 📦 Установка и запуск
+## 🚀 Features
+
+- ⚡️ Instant load times and responsive UI powered by Vite
+- 📝 Streamlined system for creating and organizing notes
+- 🔍 Fast search and easy navigation across entries
+- 🎨 Clean and minimalist design for distraction-free writing
+
+---
+
+## 📦 Installation & Launch
 
 ```bash
-# Клонируй репозиторий
+# Clone the repository
 git clone https://github.com/noverlean/Idea_Hub.git
 cd Idea_Hub
 
-# Установи зависимости
+# Install dependencies
 npm install
 
-# Запусти проект
+# Start the development server
 npm run dev
