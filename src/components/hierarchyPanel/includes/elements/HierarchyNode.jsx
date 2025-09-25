@@ -3,7 +3,7 @@ import {Section} from "@content/classes/Section.js";
 import {useTranslation} from "react-i18next";
 import {useState, useEffect} from "react";
 
-export default function HierarchyNode({ label, content, handleParentNodeSelection, defaultActiveNodeLabel, styleModifier = '' })
+export default function HierarchyNode({ label, content, handleParentNodeSelection, defaultActiveNodeLabel })
 {
     const { t } = useTranslation()
     const [selected, setSelected] = useState(false)
@@ -26,14 +26,18 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
         }
     }
 
+    content.map((node) => {
+        console.log(Object.hasOwn(node, 'title'))})
+    console.log(content.filter((x) => { Object.hasOwn(x, 'title') }))
+
     return (
         <>
             <div className='hierarchyNode'>
                 <div
                     className={
                         'headliner' +
-                        styleModifier +
-                        (selected ? ' selected' : '')
+                        ( content.filter((x) => { Object.hasOwn(x, 'title') }).length !== 0 ? '' : ' section' ) +
+                        ( selected ? ' selected' : '' )
                     }
                     onClick={ () => handleNodeSelection([]) }
                 >
@@ -42,12 +46,6 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                 <div className={'body' + (selected ? ' showed' : ' collapsed') }>
                     {
                         content.map((node, index) => {
-                            let _styleModifier1 = '';
-                            if (node instanceof Section)
-                            {
-                                _styleModifier1 += ' section'
-                            }
-
                             if (Object.hasOwn(node, 'title'))
                             {
                                 return (
@@ -57,7 +55,6 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                                         content={ node.content }
                                         handleParentNodeSelection={ handleNodeSelection }
                                         defaultActiveNodeLabel={ defaultActiveNodeLabel }
-                                        styleModifier={ _styleModifier1 }
                                     />
                                 )
                             }
