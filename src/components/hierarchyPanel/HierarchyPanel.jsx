@@ -20,7 +20,6 @@ export default function HierarchyPanel({ openType })
         {
             case 'closed':
                 setWidth(0);
-                console.log(9090909)
                 break;
             case 'structure':
                 setWidth(panelWidth);

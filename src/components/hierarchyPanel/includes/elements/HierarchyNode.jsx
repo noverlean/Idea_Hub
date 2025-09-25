@@ -1,5 +1,3 @@
-import {Setting} from "@content/classes/Setting.js";
-import {Section} from "@content/classes/Section.js";
 import {useTranslation} from "react-i18next";
 import {useState, useEffect, useRef} from "react";
 
