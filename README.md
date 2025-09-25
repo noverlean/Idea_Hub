@@ -1,12 +1,27 @@
-# React + Vite
+# 🧠 Idea Hub — Облегчённый инструмент для создания заметок
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Idea Hub — это приложение на базе **React + Vite**, вдохновлённое [Obsidian](https://obsidian.md/), но с упрощённым и более доступным подходом к созданию заметок. Цель проекта — сделать процесс записи мыслей, идей и знаний максимально быстрым, интуитивным и приятным.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Особенности
 
-## Expanding the ESLint configuration
+- ⚡️ Мгновенная загрузка и отзывчивый интерфейс благодаря Vite
+- 📝 Упрощённая система создания и организации заметок
+- 🔍 Быстрый поиск и навигация по записям
+- 🎨 Чистый и минималистичный дизайн
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📦 Установка и запуск
+
+```bash
+# Клонируй репозиторий
+git clone https://github.com/noverlean/Idea_Hub.git
+cd Idea_Hub
+
+# Установи зависимости
+npm install
+
+# Запусти проект
+npm run dev
