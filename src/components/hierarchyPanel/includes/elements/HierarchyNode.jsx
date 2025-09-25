@@ -32,8 +32,9 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
     }
 
     content.map((node) => {
-        console.log(Object.hasOwn(node, 'title'))})
-    console.log(content.filter((x) => { Object.hasOwn(x, 'title') }))
+        console.log(Object.hasOwn(node, 'title'))
+    })
+    console.log(content.filter(x => Object.hasOwn(x, 'title')))
 
     return (
         <>
@@ -41,7 +42,7 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                 <div
                     className={
                         'headliner' +
-                        ( content.filter((x) => { Object.hasOwn(x, 'title') }).length !== 0 ? '' : ' section' ) +
+                        ( content.filter(x => Object.hasOwn(x, 'title')).length !== 0 ? '' : ' section' ) +
                         ( selected ? ' selected' : '' )
                     }
                     onClick={ () => handleNodeSelection([]) }
