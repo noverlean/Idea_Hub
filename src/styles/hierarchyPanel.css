@@ -104,7 +104,6 @@ hr
 .hierarchyNode .headliner
 {
     width: calc(100% - 14px);
-    /*height: 30px;*/
 
     padding: 2px 7px;
 
@@ -145,6 +144,7 @@ hr
 .hierarchyNode .body
 {
     width: calc(100% - 15px);
+    max-height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -160,9 +160,9 @@ hr
 }
 .body.collapsed
 {
-    height: 0px;
+    max-height: 0vh;
 }
 .body.showed
 {
-    height: auto;
+    max-height: 100vh;
 }

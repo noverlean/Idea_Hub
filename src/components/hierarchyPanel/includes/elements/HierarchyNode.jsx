@@ -1,14 +1,19 @@
-import {Setting} from "@content/classes/Setting.js";
-import {Section} from "@content/classes/Section.js";
 import {useTranslation} from "react-i18next";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 
 export default function HierarchyNode({ label, content, handleParentNodeSelection, defaultActiveNodeLabel })
 {
     const { t } = useTranslation()
     const [selected, setSelected] = useState(false)
 
+    const bodyRef = useRef(null);
+    const [bodySize, setBodySize] = useState(0)
+
     useEffect(()=>{ checkAndSetCurrentNodeAsActive() }, [])
+
+    useEffect(()=>{
+        setBodySize(selected ? bodyRef.current?.scrollHeight : 0)
+    }, [ selected ])
 
     function handleNodeSelection(setSelectedTree)
     {
@@ -42,7 +47,7 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                 >
                     <p className='label'> { t(label) } </p>
                 </div>
-                <div className={'body' + (selected ? ' showed' : ' collapsed') }>
+                <div ref={ bodyRef } className={'body'} style={{ height: bodySize }}>
                     {
                         content.map((node, index) => {
                             if (Object.hasOwn(node, 'title'))
