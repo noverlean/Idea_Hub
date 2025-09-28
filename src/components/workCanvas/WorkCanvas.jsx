@@ -28,9 +28,6 @@ export default function WorkCanvas({ hierarchyPanelOpenType })
                 tabs.push( <SettingsTab /> )
                 break;
         }
-
-        console.log(tabs);
-        
     }
 
     setContentForEternalTabs();

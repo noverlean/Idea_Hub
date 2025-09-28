@@ -8,7 +8,7 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
     const { t } = useTranslation()
     const [selected, setSelected] = useState(false)
 
-    useEffect(()=>{checkAndSetCurrentNodeAsActive()}, [])
+    useEffect(()=>{ checkAndSetCurrentNodeAsActive() }, [])
 
     function handleNodeSelection(setSelectedTree)
     {
@@ -21,14 +21,13 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
         if (label === defaultActiveNodeLabel)
         {
             handleNodeSelection([])
-            console.log(22);
-            
         }
     }
 
-    content.map((node) => {
-        console.log(Object.hasOwn(node, 'title'))})
-    console.log(content.filter((x) => { Object.hasOwn(x, 'title') }))
+    const childCount = content.filter((node) => {
+        if (Object.hasOwn(node, 'title'))
+            return node;
+    }).length
 
     return (
         <>
@@ -36,7 +35,7 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                 <div
                     className={
                         'headliner' +
-                        ( content.filter((x) => { Object.hasOwn(x, 'title') }).length !== 0 ? '' : ' section' ) +
+                        ( childCount === 0 ? ' section' : '' ) +
                         ( selected ? ' selected' : '' )
                     }
                     onClick={ () => handleNodeSelection([]) }
