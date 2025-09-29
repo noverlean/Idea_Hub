@@ -1,7 +1,8 @@
 import '@css/panelControlBar.css'
 import PanelControlButton from "@components/panelControlBar/PanelControlButton.jsx";
 import windowIcon from "@assets/windows.png";
-import branchesIcon from "@assets/branches.png";
+import designIcon from "@assets/design.png";
+import graphIcon from "@assets/branches.png";
 import settings from "@assets/settings.png"
 
 export default function PanelControlBar({ currentHierarchyPanelOpenState, setHierarchyPanelOpenState })
@@ -14,7 +15,13 @@ export default function PanelControlBar({ currentHierarchyPanelOpenState, setHie
                                     setHierarchyPanelOpenState(currentHierarchyPanelOpenState !== 'structure' ? 'structure' : 'closed');
                                 }}
             />
-            <PanelControlButton imageSrc={branchesIcon}
+            <PanelControlButton imageSrc={designIcon}
+                                isActive={currentHierarchyPanelOpenState === 'design'}
+                                onClick={() => {
+                                    setHierarchyPanelOpenState(currentHierarchyPanelOpenState !== 'design' ? 'design' : 'closed');
+                                }}
+            />
+            <PanelControlButton imageSrc={graphIcon}
                                 isActive={currentHierarchyPanelOpenState === 'graph'}
                                 onClick={() => {
                                     setHierarchyPanelOpenState(currentHierarchyPanelOpenState !== 'graph' ? 'graph' : 'closed');

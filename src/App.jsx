@@ -6,7 +6,7 @@ import WorkCanvas from "@components/workCanvas/WorkCanvas.jsx";
 import {useState} from "react";
 
 function App() {
-    const [hierarchyPanelOpenType, setHierarchyPanelOpenState] = useState('structure') //able to allow values 'closed', 'structure', 'graph', 'settings'
+    const [hierarchyPanelOpenType, setHierarchyPanelOpenState] = useState('structure') //able to allow values 'closed', 'structure', 'design', 'graph', 'settings'
 
     return (
     <>
