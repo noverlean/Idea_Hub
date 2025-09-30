@@ -100,12 +100,17 @@ hr
     align-items: center;
     justify-content: flex-start;
 }
+.hierarchyNode:last-child
+{
+    margin-bottom: 3px;
+}
 
 .hierarchyNode .headliner
 {
     width: calc(100% - 14px);
 
-    padding: 2px 7px;
+    padding: 1px 6px;
+    margin: 3px 0 0 0;
 
     display: flex;
     flex-direction: row;
@@ -113,8 +118,8 @@ hr
     justify-content: flex-start;
 
     border-radius: 9px;
-    border: 1px solid var(--c-base-2);
-    background-color: var(--c-base-2);
+    border: 1px solid var(--c-transparent);
+    background-color: var(--c-transparent);
     font-size: 15px;
 
     transition: all .2s var(--a-base);
@@ -122,7 +127,11 @@ hr
 }
 .hierarchyNode .headliner:hover
 {
-    background-color: var(--c-base-3);
+    border: 1px solid var(--c-accent-3);
+    background-color: var(--c-accent-3);
+
+    transition: all .2s var(--a-base);
+
 }
 .hierarchyNode .selected
 {
@@ -135,15 +144,15 @@ hr
 
 .hierarchyNode .section
 {
-    border: 1px solid var(--c-base-1);
-    background-color: var(--c-base-1);
+    border: 1px dashed var(--c-accent-2);
+    background-color: var(--c-transparent);
 
     transition: all .2s var(--a-base);
 }
 
 .hierarchyNode .body
 {
-    width: calc(100% - 15px);
+    width: calc(100% - 10px);
     max-height: 100vh;
 
     display: flex;
@@ -151,8 +160,10 @@ hr
     align-items: center;
     justify-content: space-evenly;
 
-    margin-left: 15px;
-    margin-top: 3px;
+    padding-left: 10px;
+
+    background-color: var(--c-accent-1);
+    border-radius: 9px;
 
     overflow: hidden;
 

@@ -8,16 +8,32 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
 
     const bodyRef = useRef(null);
     const [bodySize, setBodySize] = useState(0)
+    const [scrollHeightCached, setScrollHeightCached] = useState(0)
 
-    useEffect(()=>{ checkAndSetCurrentNodeAsActive() }, [])
+    useEffect(()=>{ 
+        checkAndSetCurrentNodeAsActive()
+        calculateAndCacheScrollHeightForCurrent() 
+    }, [])
 
-    useEffect(()=>{
-        setBodySize(selected ? bodyRef.current?.scrollHeight : 0)
-    }, [ selected ])
+    // using not by useEffect for ability to update block height for event when child nodes state values (useEffect is not react on it) 
+    function recursiveStateSetter(state, childBlockHeight)
+    {        
+        setSelected(state)
+        if (state)
+        {
+            setBodySize(childBlockHeight + scrollHeightCached)
+        }
+        else
+        {
+            setBodySize(0)
+        }
+
+        return (scrollHeightCached);
+    }
 
     function handleNodeSelection(setSelectedTree)
     {
-        setSelectedTree.push(setSelected);
+        setSelectedTree.push(recursiveStateSetter);
         handleParentNodeSelection(setSelectedTree);
     }
 
@@ -27,6 +43,11 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
         {
             handleNodeSelection([])
         }
+    }
+
+    function calculateAndCacheScrollHeightForCurrent() 
+    {
+        setScrollHeightCached(bodyRef.current?.scrollHeight)
     }
 
     const childCount = content.filter((node) => {
@@ -40,7 +61,7 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                 <div
                     className={
                         'headliner' +
-                        ( childCount === 0 ? ' section' : '' ) +
+                        ( childCount !== 0 ? ' section' : '' ) +
                         ( selected ? ' selected' : '' )
                     }
                     onClick={ () => handleNodeSelection([]) }

@@ -53,6 +53,51 @@ export const settings = {
                         )
                     ]
                 ),
+                new Section(
+                    'theme',
+                    [
+                        new Section(
+                    'theme',
+                    [
+                        new Setting(
+                            'theme',
+                            'black',
+                            'dropdown',
+                            [
+                                'white',
+                                'black'
+                            ]
+                        )
+                    ]
+                ),
+                new Section(
+                    'icon',
+                    [
+                        new Setting(
+                            'icon',
+                            'default',
+                            'gallery',
+                            [
+                                'default'
+                            ]
+                        )
+                    ]
+                ),
+                    ]
+                ),
+                new Section(
+                    'icon',
+                    [
+                        new Setting(
+                            'icon',
+                            'default',
+                            'gallery',
+                            [
+                                'default'
+                            ]
+                        )
+                    ]
+                ),
             ]
         ),
         new Category(

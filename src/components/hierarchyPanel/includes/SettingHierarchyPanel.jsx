@@ -14,8 +14,9 @@ export default function SettingHierarchyPanel()
             setSelected(false)
         })
 
+        let childBlockHeight = 0
         selectionTree.map((setSelected) => {
-            setSelected(true)
+            childBlockHeight = setSelected(true, childBlockHeight)
         })
 
         setLastSelectionTree(selectionTree)
