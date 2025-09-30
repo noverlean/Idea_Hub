@@ -1,12 +1,20 @@
 import '@css/workCanvas.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import EmptyTab from "@components/workCanvas/includes/tabs/EmptyTab.jsx";
 import Tab from "@components/workCanvas/includes/tabs/Tab.jsx";
-import SettingsTab from "@components/workCanvas/includes/tabs/SettingsTab.jsx";
+import useSettingPanelContext from "@contexts/settingPanelContext.js";
 
 export default function WorkCanvas({ hierarchyPanelOpenType })
 {
     const [tabs] = useState([])
+    const [selectedNodeLabel, setSelectedNodeLabel] = useSettingPanelContext()
+
+    useEffect(activateTab(), [selectedNodeLabel])
+
+    function activateTab()
+    {
+        console.log(selectedNodeLabel);
+    }
 
     function setContentForEternalTabs() {
         switch (hierarchyPanelOpenType) {

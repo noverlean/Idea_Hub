@@ -1,5 +1,6 @@
 import {useTranslation} from "react-i18next";
 import {useState, useEffect, useRef} from "react";
+import { SettingPanelContext } from "@contexts/settingPanelContext.js";
 
 export default function HierarchyNode({ label, content, handleParentNodeSelection, defaultActiveNodeLabel })
 {
@@ -9,6 +10,8 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
     const bodyRef = useRef(null);
     const [bodySize, setBodySize] = useState(0)
     const [scrollHeightCached, setScrollHeightCached] = useState(0)
+
+    const [selectedNodeLabel, setSelectedNodeLabel] = useState({ label });
 
     useEffect(()=>{ 
         checkAndSetCurrentNodeAsActive()
@@ -74,13 +77,15 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                             if (Object.hasOwn(node, 'title'))
                             {
                                 return (
-                                    <HierarchyNode
-                                        key={ index }
-                                        label={ node.title }
-                                        content={ node.content }
-                                        handleParentNodeSelection={ handleNodeSelection }
-                                        defaultActiveNodeLabel={ defaultActiveNodeLabel }
-                                    />
+                                    <SettingPanelContext.Provider value={{ selectedNodeLabel, setSelectedNodeLabel }}>
+                                        <HierarchyNode
+                                            key={ index }
+                                            label={ node.title }
+                                            content={ node.content }
+                                            handleParentNodeSelection={ handleNodeSelection }
+                                            defaultActiveNodeLabel={ defaultActiveNodeLabel }
+                                        />
+                                    </SettingPanelContext.Provider>
                                 )
                             }
                         })
