@@ -16,7 +16,7 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
     useEffect(()=>{ 
         checkAndSetCurrentNodeAsActive()
         calculateAndCacheScrollHeightForCurrent() 
-    }, [checkAndSetCurrentNodeAsActive])
+    }, [])
 
     // using not by useEffect for ability to update block height for event when child nodes state values (useEffect is not react on it) 
     function recursiveStateSetter(state, childBlockHeight)
