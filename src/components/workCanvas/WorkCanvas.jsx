@@ -1,17 +1,20 @@
 import '@css/workCanvas.css'
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import EmptyTab from "@components/workCanvas/includes/tabs/EmptyTab.jsx";
 import Tab from "@components/workCanvas/includes/tabs/Tab.jsx";
-import useSettingPanelContext from "@contexts/settingPanelContext.js";
+import {SettingPanelContext} from "@contexts/settingPanelContext.jsx";
+import SettingsTab from "@components/workCanvas/includes/tabs/SettingsTab.jsx";
 
 export default function WorkCanvas({ hierarchyPanelOpenType })
 {
     const [tabs] = useState([])
-    const [selectedNodeLabel, setSelectedNodeLabel] = useSettingPanelContext()
+    const settingPanelContext = useContext(SettingPanelContext)
 
-    useEffect(activateTab(), [selectedNodeLabel])
+    useEffect(() => {
+        activateTab(settingPanelContext.selectedNodeLabel)
+    }, [settingPanelContext.selectedNodeLabel])
 
-    function activateTab()
+    function activateTab(selectedNodeLabel)
     {
         console.log(selectedNodeLabel);
     }
@@ -43,7 +46,7 @@ export default function WorkCanvas({ hierarchyPanelOpenType })
     return (
         <div className='workCanvas'>
             { tabs.length === 0 && <EmptyTab /> }
-            
+
             {
                 tabs.map((elem, index) => (
                     <Tab key={ index } innerContent={ elem } />

@@ -1,6 +1,6 @@
 import {useTranslation} from "react-i18next";
-import {useState, useEffect, useRef} from "react";
-import { SettingPanelContext } from "@contexts/settingPanelContext.js";
+import {useState, useEffect, useRef, useContext} from "react";
+import {SettingPanelContext} from "@contexts/settingPanelContext.jsx";
 
 export default function HierarchyNode({ label, content, handleParentNodeSelection, defaultActiveNodeLabel })
 {
@@ -11,12 +11,12 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
     const [bodySize, setBodySize] = useState(0)
     const [scrollHeightCached, setScrollHeightCached] = useState(0)
 
-    const [selectedNodeLabel, setSelectedNodeLabel] = useState({ label });
+    const { setSelectedNodeLabel } = useContext(SettingPanelContext);
 
     useEffect(()=>{ 
         checkAndSetCurrentNodeAsActive()
         calculateAndCacheScrollHeightForCurrent() 
-    }, [])
+    }, [checkAndSetCurrentNodeAsActive])
 
     // using not by useEffect for ability to update block height for event when child nodes state values (useEffect is not react on it) 
     function recursiveStateSetter(state, childBlockHeight)
@@ -36,8 +36,10 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
 
     function handleNodeSelection(setSelectedTree)
     {
-        setSelectedTree.push(recursiveStateSetter);
-        handleParentNodeSelection(setSelectedTree);
+        setSelectedTree.push(recursiveStateSetter)
+        handleParentNodeSelection(setSelectedTree)
+
+        setSelectedNodeLabel(label)
     }
 
     function checkAndSetCurrentNodeAsActive()
@@ -77,15 +79,13 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                             if (Object.hasOwn(node, 'title'))
                             {
                                 return (
-                                    <SettingPanelContext.Provider value={{ selectedNodeLabel, setSelectedNodeLabel }}>
-                                        <HierarchyNode
-                                            key={ index }
-                                            label={ node.title }
-                                            content={ node.content }
-                                            handleParentNodeSelection={ handleNodeSelection }
-                                            defaultActiveNodeLabel={ defaultActiveNodeLabel }
-                                        />
-                                    </SettingPanelContext.Provider>
+                                    <HierarchyNode
+                                        key={ index }
+                                        label={ node.title }
+                                        content={ node.content }
+                                        handleParentNodeSelection={ handleNodeSelection }
+                                        defaultActiveNodeLabel={ defaultActiveNodeLabel }
+                                    />
                                 )
                             }
                         })

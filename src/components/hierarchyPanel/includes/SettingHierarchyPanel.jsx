@@ -29,7 +29,7 @@ export default function SettingHierarchyPanel()
                 settings.defaults.map((node, index) => (
                     <HierarchyNode
                         key={ index }
-                        label={ t(node.title) }
+                        label={ node.title }
                         content={ node.content }
                         handleParentNodeSelection={ handleNodeSelection }
                         defaultActiveNodeLabel={ 'ui_lang' }
