@@ -1,7 +1,9 @@
 import '@css/hierarchyPanel.css'
-import StructureHierarchyPanel from "@components/hierarchyPanel/includes/StructureHierarchyPanel.jsx";
 import {useEffect, useState} from "react";
-import SettingHierarchyPanel from "@components/hierarchyPanel/includes/SettingHierarchyPanel.jsx";
+import StructureHierarchyPanel from "./includes/StructureHierarchyPanel.jsx";
+import SettingHierarchyPanel from "./includes/SettingHierarchyPanel.jsx";
+import DesignHierarchyPanel from './includes/DesignHierarchyPanel';
+import GraphHierarchyPanel from './includes/GraphHierarchyPanel';
 
 export default function HierarchyPanel({ openType })
 {
@@ -25,9 +27,13 @@ export default function HierarchyPanel({ openType })
                 setWidth(panelWidth);
                 setCurrentContent(<StructureHierarchyPanel />)
                 break;
+            case 'design':
+                setWidth(panelWidth);
+                setCurrentContent(<DesignHierarchyPanel />)
+                break;
             case 'graph':
                 setWidth(panelWidth);
-                setCurrentContent(<StructureHierarchyPanel />)
+                setCurrentContent(<GraphHierarchyPanel />)
                 break;
             case 'settings':
                 setWidth(panelWidth);
