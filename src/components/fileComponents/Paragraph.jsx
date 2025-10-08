@@ -1,7 +1,7 @@
 
-export default function Paragraph({ text })
+export default function Paragraph({ style, children })
 {
     return (
-        <p>{ text }</p>
+        <p style={ style }>{ children }</p>
     )
 }

@@ -33,7 +33,7 @@ export default function SettingsTab({ settingPanelContext })
                                 {
                                     section.content.map((setting, index1) => (
                                         <HorizontalBlock key={ index1 }>
-                                            <Paragraph>{ t(setting.name) }</Paragraph>
+                                            <Paragraph style={{marginLeft: "10px"}}>{ t(setting.name) }</Paragraph>
                                             <Switch name={ setting.name } type={ setting.switchType } content={ setting.ableValues } />
                                         </HorizontalBlock>
                                     ))
