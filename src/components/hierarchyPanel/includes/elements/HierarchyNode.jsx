@@ -38,7 +38,8 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
     {
         setSelectedTree.push(recursiveStateSetter)
         handleParentNodeSelection(setSelectedTree)
-
+        console.log(label);
+        
         setSelectedNodeLabel(label)
     }
 

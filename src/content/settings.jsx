@@ -105,4 +105,34 @@ export const settings = {
             []
         )
     ],
+    findCategoryByChildName(childName)
+    {
+        let categoryName = ''
+
+        this.defaults.forEach((category) => {
+            if (categoryName !== '')
+                return;    
+                    
+            if (category.title === childName)
+                categoryName = category.title;
+
+            category.content.forEach((section) => {
+                if (categoryName !== '')
+                    return;   
+
+                if (section.title === childName)
+                    categoryName = category.title;
+
+                section.content.forEach((setting) => {
+                    if (categoryName !== '')
+                        return;
+
+                    if (setting.name === childName)
+                        categoryName = category.title;
+                })
+            })
+        })
+
+        return categoryName
+    }
 }

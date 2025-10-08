@@ -1,5 +1,5 @@
 import '@css/settingsTab.css'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { settings } from '@content/settings'
 import Header from '@components/fileComponents/Header'
@@ -9,10 +9,17 @@ import Paragraph from '@components/fileComponents/Paragraph'
 import Switch from '@components/fileComponents/Switch'
 import { useTranslation } from 'react-i18next'
 
-export default function SettingsTab()
+export default function SettingsTab({ settingPanelContext })
 {
     const [activeCategory, setActiveCategory] = useState('generalSettings')   
     const { t } = useTranslation()
+
+    useEffect(() => {
+        let activeCategoryTitle = settings.findCategoryByChildName(settingPanelContext.selectedNodeLabel)
+        setActiveCategory(activeCategoryTitle)
+        console.log(activeCategoryTitle);
+        
+    }, [settingPanelContext.selectedNodeLabel])
 
     return (
         <div className='settingsTab'>
@@ -22,15 +29,13 @@ export default function SettingsTab()
                     if (category.title === activeCategory) {
                         return category.content.map((section, index) => (
                             <React.Fragment key={ index }>
-                                <Header text={ section.title } />
+                                <Header>{ section.title }</Header> 
                                 {
                                     section.content.map((setting, index1) => (
-                                        <HorizontalBlock key={ index1 } innerContent={(
-                                            <>
-                                                <Paragraph text={ t(setting.name) } />
-                                                <Switch name={ setting.name } type={ setting.switchType } content={ setting.ableValues } />
-                                            </>
-                                        )} />
+                                        <HorizontalBlock key={ index1 }>
+                                            <Paragraph>{ t(setting.name) }</Paragraph>
+                                            <Switch name={ setting.name } type={ setting.switchType } content={ setting.ableValues } />
+                                        </HorizontalBlock>
                                     ))
                                 }
                                 <Space />
