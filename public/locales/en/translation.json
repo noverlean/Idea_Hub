@@ -1,5 +1,4 @@
 {
-  "createNewTab": "Create new Tab",
   "hereStillEmpty": "Here still so empty",
   "settings": "Settings",
   "generalSettings": "General",
@@ -10,5 +9,7 @@
   "ru":"Russian",
   "en":"English",
   "theme": "Themes",
-  "icon": "App Icon"
+  "icon": "App Icon",
+  "emptyHereNow": "It's empty here for now...",
+  "createNewNote": "Create new note"
 }

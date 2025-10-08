@@ -47,7 +47,7 @@ export default function EmptyTab()
                     {smile}
                 </motion.span>
             </p>
-            <button>{t('createNewTab')}</button>
+            <button>{t('createNewNote')}</button>
         </div>
     )
 }
