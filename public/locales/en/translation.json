@@ -11,5 +11,7 @@
   "theme": "Themes",
   "icon": "App Icon",
   "emptyHereNow": "It's empty here for now...",
-  "createNewNote": "Create new note"
+  "createNewNote": "Create new note",
+  "createNewDesign": "Create new design",
+  "createNewGraph": "Create new graph"
 }

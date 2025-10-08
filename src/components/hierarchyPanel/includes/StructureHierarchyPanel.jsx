@@ -46,13 +46,13 @@ function EmptyPlug()
         }}>
             <p style={{ 
                     marginBottom: 6+'px' 
-                }} >{t('emptyHereNow')}</p>
+            }} >{t('emptyHereNow')}</p>
             <button style={{ 
                     paddingTop: 5+'px',
                     paddingRight: 8+'px',
                     paddingBottom: 5+'px',
                     paddingLeft: 8+'px',
-                }} >{t('createNewNote')}</button>
+            }} >{t('createNewNote')}</button>
         </div>
         
     </>)

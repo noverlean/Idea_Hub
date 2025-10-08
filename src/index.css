@@ -61,6 +61,7 @@ button {
 button:hover {
   background-color: var(--c-accent-3);
   color: var(--c-text-1);
+  box-shadow:  0px 0px 15px 4px var(--c-accent-2);
 }
 
 /* Сброс стандартных стилей */
