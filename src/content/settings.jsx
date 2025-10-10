@@ -53,44 +53,17 @@ export const settings = {
                         )
                     ]
                 ),
+            ]
+        ),
+        new Category(
+            'account',
+            [
                 new Section(
-                    'theme',
-                    [
-                        new Section(
-                    'theme',
+                    'link_account',
                     [
                         new Setting(
-                            'theme',
-                            'black',
-                            'dropdown',
-                            [
-                                'white',
-                                'black'
-                            ]
-                        )
-                    ]
-                ),
-                new Section(
-                    'icon',
-                    [
-                        new Setting(
-                            'icon',
-                            'default',
-                            'gallery',
-                            [
-                                'default'
-                            ]
-                        )
-                    ]
-                ),
-                    ]
-                ),
-                new Section(
-                    'icon',
-                    [
-                        new Setting(
-                            'icon',
-                            'default',
+                            'account_link_selection',
+                            'none',
                             'gallery',
                             [
                                 'default'
@@ -99,10 +72,6 @@ export const settings = {
                     ]
                 ),
             ]
-        ),
-        new Category(
-            'account',
-            []
         )
     ],
     findCategoryByChildName(childName)
@@ -112,7 +81,7 @@ export const settings = {
         this.defaults.forEach((category) => {
             if (categoryName !== '')
                 return;    
-                    
+
             if (category.title === childName)
                 categoryName = category.title;
 

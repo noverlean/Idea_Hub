@@ -1,50 +1,92 @@
 import '@css/settingsTab.css'
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useState } from 'react'
 import { settings } from '@content/settings'
 import Header from '@components/fileComponents/Header'
 import Space from '@components/fileComponents/Space'
-import HorizontalBlock from '@components/fileComponents/HorizontalBlock'
-import Paragraph from '@components/fileComponents/Paragraph'
-import Switch from '@components/fileComponents/Switch'
-import { useTranslation } from 'react-i18next'
+import Container from '../../../fileComponents/Container'
+import DropdownSetting from './settingPatterns/DropdownSetting.jsx'
 
 export default function SettingsTab({ settingPanelContext })
 {
     const [activeCategory, setActiveCategory] = useState('generalSettings')   
-    const { t } = useTranslation()
+    let spotlightTimeout;
 
     useEffect(() => {
-        let activeCategoryTitle = settings.findCategoryByChildName(settingPanelContext.selectedNodeLabel)
-        setActiveCategory(activeCategoryTitle)
-        console.log(activeCategoryTitle);
+        if (settingPanelContext.selectedNodeLabel === null)
+            return
+
+        let activatedCategoryTitle = settings.findCategoryByChildName(settingPanelContext.selectedNodeLabel)
+        let activatedNode = document.getElementById(settingPanelContext.selectedNodeLabel)
+              
+        
+        setActiveCategory(activatedCategoryTitle)
+        scrollTo(activatedNode)
+        animateActivatedSection("containerOf"+settingPanelContext.selectedNodeLabel, spotlightTimeout)
         
     }, [settingPanelContext.selectedNodeLabel])
 
+    
     return (
         <div className='settingsTab'>
             <Space />
+            <Container id={"containerOf"+activeCategory}>
             {
-                settings?.defaults?.map((category) => {
-                    if (category.title === activeCategory) {
-                        return category.content.map((section, index) => (
-                            <React.Fragment key={ index }>
-                                <Header>{ section.title }</Header> 
-                                {
-                                    section.content.map((setting, index1) => (
-                                        <HorizontalBlock key={ index1 }>
-                                            <Paragraph style={{marginLeft: "10px"}}>{ t(setting.name) }</Paragraph>
-                                            <Switch name={ setting.name } type={ setting.switchType } content={ setting.ableValues } />
-                                        </HorizontalBlock>
-                                    ))
-                                }
-                                <Space />
-                            </React.Fragment>
-                        ));
-                    }
-                    return null;
-                })
+                getCurrentCategory(activeCategory).content.map((section, index) => (
+                    <Fragment key={ index } >
+                        <Container id={"containerOf"+section.title}>
+                            <Header>{ section.title }</Header> 
+                            {
+                                section.content.map((setting, index1) => {
+                                    switch(setting.type)
+                                    {
+                                        case 'dropdown':
+                                            return (<DropdownSetting key={index1} settingObj={setting} />)
+                                        case 'gallery':
+                                            console.warn("no such corresponding setting type for parse to component");
+                                            break;
+                                        default: 
+                                            console.error("no such corresponding setting type for parse to component");
+                                    }
+                                })
+                            }
+                        </Container>
+                        <Space />
+                    </Fragment>
+                ))
             }
+            </Container>
         </div>
     )
+}
+
+function animateActivatedSection(elemId, spotlightTimeout) {
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            const elem = document.getElementById(elemId);
+            console.log(elem);
+            
+            if (!elem) return;
+
+            elem.classList.add('spotlighted');
+
+            clearTimeout(spotlightTimeout);
+            spotlightTimeout = setTimeout(() => {
+                elem.classList.remove('spotlighted');
+            }, 800);
+        });
+    });
+}
+
+function getCurrentCategory(_activeCategory)
+{
+    let _result = null;
+    
+    settings?.defaults?.map((category) => {
+        if (category.title === _activeCategory) {
+            _result = category
+        }
+    })
+
+    return _result
 }

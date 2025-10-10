@@ -1,10 +1,10 @@
 export class Setting
 {
     
-    constructor(name, value, switchType='', ableValues = []) {
+    constructor(name, value, type='', ableValues = []) {
         this.name = name;
         this.value = value;
-        this.switchType = switchType;
+        this.type = type;
         this.ableValues = ableValues;
     }
 }

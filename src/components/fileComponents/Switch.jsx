@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Switch({ name, type, content })
 {
-    const {t} = useTranslation()
+    const {t} = useTranslation()  
 
     switch(type)
     {
