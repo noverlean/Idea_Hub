@@ -13,5 +13,7 @@
   "emptyHereNow": "Пока тут пусто...",
   "createNewNote": "Создать заметку",
   "createNewDesign": "Создать новый дизайн",
-  "createNewGraph": "Создать новый граф"
+  "createNewGraph": "Создать новый граф",
+  "lightTheme": "Светлая",
+  "darkTheme": "Темная"
 }

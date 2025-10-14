@@ -9,7 +9,7 @@ export default function Dropdown({name, ableValues})
         <select name={ name }>
             {
                 ableValues.map((value, index) => (
-                    <option key={ index } value={ value }>{ t(value) }</option>
+                    <option key={ index } value={ t(value) }>{ t(value) }</option>
                 ))
             }
         </select>

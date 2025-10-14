@@ -13,5 +13,7 @@
   "emptyHereNow": "It's empty here for now...",
   "createNewNote": "Create new note",
   "createNewDesign": "Create new design",
-  "createNewGraph": "Create new graph"
+  "createNewGraph": "Create new graph",
+  "lightTheme": "Light",
+  "darkTheme": "Dark"
 }

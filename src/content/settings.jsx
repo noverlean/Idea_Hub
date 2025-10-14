@@ -34,8 +34,8 @@ export const settings = {
                             'black',
                             'dropdown',
                             [
-                                'white',
-                                'black'
+                                'lightTheme',
+                                'darkTheme'
                             ]
                         )
                     ]

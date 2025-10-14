@@ -3,7 +3,7 @@ import Paragraph from '@components/fileComponents/Paragraph'
 import Dropdown from '@components/fileComponents/Dropdown'
 import { useTranslation } from 'react-i18next'
 
-export default function DefaultSetting({ settingObj })
+export default function DropdownSetting({ settingObj })
 {
     const {t} = useTranslation()
     console.log(settingObj.ableValues);
