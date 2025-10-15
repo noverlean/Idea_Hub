@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 
 export default function StructureHierarchyPanel()
 {
-    // const {t} = useTranslation()
+    const {t} = useTranslation()
     // const [lastSelectionTree, setLastSelectionTree] = useState([])
 
     // function handleNodeSelection(selectionTree)
@@ -23,7 +23,7 @@ export default function StructureHierarchyPanel()
 
     return (
         <>
-            <h2 className='header'>Структура</h2>
+            <h2 className='header'>{t('sctucture')}</h2>
             {
                 <EmptyPlug />
             }

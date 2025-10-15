@@ -2,9 +2,11 @@ import {useTranslation} from "react-i18next";
 
 export default function DesignHierarchyPanel()
 {
+    const {t} = useTranslation()
+    
     return (
         <>
-            <h2 className='header'>Дизайн</h2>
+            <h2 className='header'>{t('design')}</h2>
             {
                 <EmptyPlug />
             }

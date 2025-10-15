@@ -1,5 +1,8 @@
 {
   "hereStillEmpty": "Здесь пока пусто",
+  "design":"Дизайн",
+  "sctucture":"Структура",
+  "branches": "Ветвления",
   "settings": "Настройки",
   "generalSettings": "Основные",
   "appearance": "Внешний вид",
@@ -7,7 +10,7 @@
   "ui_lang": "Язык",
   "ui_language": "Язык программы",
   "ru":"Русский",
-  "en":"Английский",
+  "en":"English",
   "theme": "Темы",
   "icon": "Иконка приложения",
   "emptyHereNow": "Пока тут пусто...",

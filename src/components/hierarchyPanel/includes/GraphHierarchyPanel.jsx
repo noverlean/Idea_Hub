@@ -2,9 +2,11 @@ import {useTranslation} from "react-i18next";
 
 export default function GraphHierarchyPanel()
 {
+    const {t} = useTranslation()
+
     return (
         <>
-            <h2 className='header'>Ветвления</h2>
+            <h2 className='header'>{t('branches')}</h2>
             {
                 <EmptyPlug />
             }
