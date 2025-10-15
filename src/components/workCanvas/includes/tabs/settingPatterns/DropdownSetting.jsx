@@ -11,7 +11,7 @@ export default function DropdownSetting({ settingObj })
     return (
         <HorizontalBlock id={settingObj.name}>
             <Paragraph style={{marginLeft: "10px"}}>{t(settingObj.name)}</Paragraph>
-            <Dropdown name={settingObj.name} ableValues={settingObj.ableValues} />
+            <Dropdown name={settingObj.name} currentValue={settingObj.value} ableValues={settingObj.ableValues} handler={settingObj.handler} />
         </HorizontalBlock>
     )
 }

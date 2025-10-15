@@ -2,6 +2,15 @@ import {Category} from "@content/classes/Category.js";
 import {Section} from "@content/classes/Section.js";
 import {Setting} from "@content/classes/Setting.js";
 
+function changeLanguageHandler(value, translation) {
+  if (this.ableValues.includes(value)) {
+    this.value = value;
+    translation.changeLanguage(value);
+  } else {
+    console.error(`Неподдерживаемый язык: ${value}`);
+  }
+}
+
 export const settings = {
     defaults: [
         new Category(
@@ -14,10 +23,8 @@ export const settings = {
                             'ui_language',
                             'ru',
                             'dropdown',
-                            [
-                                'ru',
-                                'en'
-                            ]
+                            ['ru', 'en'],
+                            changeLanguageHandler
                         )
                     ]
                 ),
@@ -59,7 +66,7 @@ export const settings = {
             'account',
             [
                 new Section(
-                    'link_account',
+                    'linkAccount',
                     [
                         new Setting(
                             'account_link_selection',
@@ -103,5 +110,5 @@ export const settings = {
         })
 
         return categoryName
-    }
+    }    
 }
