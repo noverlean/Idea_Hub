@@ -1,21 +1,21 @@
 import { useTranslation } from "react-i18next"
 import { useState } from "react"
 
-export default function Dropdown({name, currentValue, ableValues, handler})
+export default function Dropdown({name, value, ableValues, handler})
 {    
-    const {t, i18n} = useTranslation()
-    const [selectedValue, setSelectedValue] = useState(currentValue)
+    const {t} = useTranslation()
+    const [selectedValue, setSelectedValue] = useState(value)
 
     const handleChange = (event) => {
         setSelectedValue(event.target.value)
-        handler(event.target.value, i18n)
+        handler(event.target.value)
     }
 
     return (
         <select name={name} value={selectedValue} onChange={handleChange}>
             {
-                ableValues.map((value, index) => (
-                    <option key={index} value={value}> {t(value)} </option>
+                ableValues.map((_value, index) => (
+                    <option key={index} value={_value}> {t(_value)} </option>
                 ))
             }
         </select>

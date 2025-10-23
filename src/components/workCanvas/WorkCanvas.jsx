@@ -1,14 +1,12 @@
 import '@css/workCanvas.css'
-import {useContext, useState} from "react";
+import {useState} from "react";
 import EmptyTab from "@components/workCanvas/includes/tabs/EmptyTab.jsx";
 import Tab from "@components/workCanvas/includes/tabs/Tab.jsx";
-import {SettingPanelContext} from "@contexts/settingPanelContext.jsx";
 import SettingsTab from "@components/workCanvas/includes/tabs/SettingsTab.jsx";
 
 export default function WorkCanvas({ hierarchyPanelOpenType })
 {
     const [tabs] = useState([])
-    const settingPanelContext = useContext(SettingPanelContext)
 
     function setContentForEternalTabs() {
         switch (hierarchyPanelOpenType) {
@@ -27,7 +25,7 @@ export default function WorkCanvas({ hierarchyPanelOpenType })
                     tabs.pop(elem)
                 })
 
-                tabs.push( <SettingsTab settingPanelContext={settingPanelContext} /> )
+                tabs.push( <SettingsTab /> )
                 break;
         }
     }

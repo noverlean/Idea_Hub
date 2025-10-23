@@ -6,7 +6,5 @@ export class Setting
         this.type = type;
         this.ableValues = ableValues;
         this.handler = typeof handler === 'function' ? handler.bind(this) : null;
-
-        console.log(handler);
     }
 }

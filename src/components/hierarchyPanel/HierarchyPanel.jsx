@@ -13,7 +13,6 @@ export default function HierarchyPanel({ openType })
     const [width, setWidth] = useState(250);
 
     useEffect(() => {
-        console.log(55)
         document.getElementById('hierarchyPanel').style.width = width + 'px'
     }, [width]);
 
