@@ -8,9 +8,11 @@ import {SettingPanelProvider} from "@contexts/settingPanelProvider.jsx";
 
 function App() {
     const [hierarchyPanelOpenType, setHierarchyPanelOpenState] = useState('structure') //able to allow values 'closed', 'structure', 'design', 'graph', 'settings'
+
     useEffect(() => {
-        console.log("hierarchyPanelOpenType: " + hierarchyPanelOpenType);
-    },[hierarchyPanelOpenType])
+        console.log(hierarchyPanelOpenType);
+    }, [hierarchyPanelOpenType])
+
     return (
     <>
         <div className='workspace'>

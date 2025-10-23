@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next";
-import {useState, useEffect, useRef, useContext} from "react";
+import {useState, useLayoutEffect, useRef, useContext} from "react";
 import {SettingPanelContext} from "@contexts/settingPanelContext.jsx";
 
 export default function HierarchyNode({ label, content, handleParentNodeSelection, defaultActiveNodeLabel })
@@ -13,15 +13,17 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
 
     const { setSelectedNodeLabel } = useContext(SettingPanelContext);
 
-    useEffect(()=>{ 
-        checkAndSetCurrentNodeAsActive()
+    useLayoutEffect(()=>{ 
         calculateAndCacheScrollHeightForCurrent() 
+        checkAndSetCurrentNodeAsActive()
     }, [])
 
     // using not by useEffect for ability to update block height for event when child nodes state values (useEffect is not react on it) 
     function recursiveStateSetter(state, childBlockHeight)
     {        
         setSelected(state)
+        console.log(`12345 ${state} ${ scrollHeightCached}`);
+        
         if (state)
         {
             setBodySize(childBlockHeight + scrollHeightCached)
@@ -38,8 +40,6 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
     {
         setSelectedTree.push(recursiveStateSetter)
         handleParentNodeSelection(setSelectedTree)
-        
-        setSelectedNodeLabel(label)
     }
 
     function checkAndSetCurrentNodeAsActive()
@@ -52,6 +52,8 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
 
     function calculateAndCacheScrollHeightForCurrent() 
     {
+        console.log('12333123123');
+        
         setScrollHeightCached(bodyRef.current?.scrollHeight)
     }
 
@@ -69,7 +71,10 @@ export default function HierarchyNode({ label, content, handleParentNodeSelectio
                         ( childCount !== 0 ? ' section' : '' ) +
                         ( selected ? ' selected' : '' )
                     }
-                    onClick={ () => handleNodeSelection([]) }
+                    onClick={ () => {
+                        handleNodeSelection([])
+                        setSelectedNodeLabel(label)
+                    }}
                 >
                     <p className='label'> { t(label) } </p>
                 </div>

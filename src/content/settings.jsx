@@ -2,16 +2,17 @@ import {Category} from "@content/classes/Category.js";
 import {Section} from "@content/classes/Section.js";
 import {Setting} from "@content/classes/Setting.js";
 
-function changeLanguageHandler(value, translation) {
-  if (this.ableValues.includes(value)) {
-    this.value = value;
-    translation.changeLanguage(value);
-  } else {
-    console.error(`Неподдерживаемый язык: ${value}`);
-  }
+function plugHandler(value)
+{
+    console.log(`значение параметра изменено на ${value}`);
 }
 
-export const settings = {
+function changeLanguageHandler(value, dependencies) {
+    dependencies.i18n.changeLanguage(value);
+}
+
+export const settingsObj = {
+    overrided: [],
     defaults: [
         new Category(
             'generalSettings',
@@ -43,7 +44,8 @@ export const settings = {
                             [
                                 'lightTheme',
                                 'darkTheme'
-                            ]
+                            ],
+                            plugHandler
                         )
                     ]
                 ),
@@ -55,8 +57,11 @@ export const settings = {
                             'default',
                             'gallery',
                             [
-                                'default'
-                            ]
+                                'default',
+                                'dark',
+                                'light'
+                            ],
+                            plugHandler
                         )
                     ]
                 ),
@@ -73,8 +78,10 @@ export const settings = {
                             'none',
                             'gallery',
                             [
-                                'default'
-                            ]
+                                'none',
+                                'google drive'
+                            ],
+                            plugHandler
                         )
                     ]
                 ),
@@ -110,5 +117,40 @@ export const settings = {
         })
 
         return categoryName
-    }    
+    },
+    settingObjs: {
+        list: [],
+        item(index){ return this.list[index] },
+        findSetting(name) {
+            let resultSettingObj = null
+            this.list.forEach((settingObj) => {
+                if (settingObj.name === name)
+                    resultSettingObj = settingObj
+            })
+            return resultSettingObj;
+        },
+        push(settingObj) {
+            this.list.push(settingObj)
+        },
+        length() {
+            return this.list.length;
+        }
+    },
+    _getSettingObjsList()
+    {
+        this.defaults.forEach((category) => {
+            category.content.forEach((section) => {
+                section.content.forEach((setting) => {
+                    this.settingObjs.push(setting)
+                })
+            })
+        })
+    },
+    getSettingObjsList()
+    {
+        if (this.settingObjs.length() === 0)
+            this._getSettingObjsList()
+
+        return this.settingObjs;
+    }
 }

@@ -1,22 +1,25 @@
 import '@css/settingsTab.css'
-import React, { Fragment, useEffect } from 'react'
-import { useState } from 'react'
-import { settings } from '@content/settings'
+import { Fragment, useEffect } from 'react'
+import { settingsObj } from '@content/settings'
 import Header from '@components/fileComponents/Header'
 import Space from '@components/fileComponents/Space'
-import Container from '../../../fileComponents/Container'
+import Container from '@components/fileComponents/Container'
 import DropdownSetting from './settingPatterns/DropdownSetting.jsx'
+import { useState, useContext } from 'react'
+import {SettingPanelContext} from "@contexts/settingPanelContext.jsx";
 
-export default function SettingsTab({ settingPanelContext })
+export default function SettingsTab()
 {
-    const [activeCategory, setActiveCategory] = useState('generalSettings')   
+    const settingPanelContext = useContext(SettingPanelContext)
+    const [activeCategory, setActiveCategory] = useState('generalSettings')
+    
     let spotlightTimeout;
 
     useEffect(() => {
         if (settingPanelContext.selectedNodeLabel === null)
             return
 
-        let activatedCategoryTitle = settings.findCategoryByChildName(settingPanelContext.selectedNodeLabel)
+        let activatedCategoryTitle = settingsObj.findCategoryByChildName(settingPanelContext.selectedNodeLabel)
         let activatedNode = document.getElementById(settingPanelContext.selectedNodeLabel)
               
         
@@ -25,7 +28,6 @@ export default function SettingsTab({ settingPanelContext })
         animateActivatedSection("containerOf"+settingPanelContext.selectedNodeLabel, spotlightTimeout)
         
     }, [settingPanelContext.selectedNodeLabel])
-
     
     return (
         <div className='settingsTab'>
@@ -41,10 +43,9 @@ export default function SettingsTab({ settingPanelContext })
                                     switch(setting.type)
                                     {
                                         case 'dropdown':
-                                            return (<DropdownSetting key={index1} settingObj={setting} />)
+                                            return (<DropdownSetting key={index1} settingName={setting.name} />)
                                         case 'gallery':
-                                            console.warn("no such corresponding setting type for parse to component");
-                                            break;
+                                            return (<DropdownSetting key={index1} settingName={setting.name} />)
                                         default: 
                                             console.error("no such corresponding setting type for parse to component");
                                     }
@@ -64,7 +65,6 @@ function animateActivatedSection(elemId, spotlightTimeout) {
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             const elem = document.getElementById(elemId);
-            console.log(elem);
             
             if (!elem) return;
 
@@ -82,7 +82,7 @@ function getCurrentCategory(_activeCategory)
 {
     let _result = null;
     
-    settings?.defaults?.map((category) => {
+    settingsObj?.defaults?.map((category) => {
         if (category.title === _activeCategory) {
             _result = category
         }
